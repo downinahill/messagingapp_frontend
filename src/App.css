@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&display=swap');
+
+
+*{
+  background-image: url('https://www.shutterstock.com/image-vector/grunge-style-halloween-red-background-blood-583943026');
+
+}
+
 .App {
   text-align: center;
   display: grid;
@@ -7,11 +15,14 @@
 
 .app_body{
   display: flex;
+  font-family: 'Comforter', cursive, bold;
+  font-size: 20px;
   background-color:#ededed;
-  margin-top: -50px;
+  margin-top: 10px;
   height: 90vh;
   width: 90vw;
-  box-shadow: -1px 4px 20px -6px rgba(o, o, o , o.75)
+  box-shadow: -1px 4px 10px -6px rgba(o, o, o , o.75);
+  background-image: url('https://imgur.com/w9fuW69')
 }
 
 

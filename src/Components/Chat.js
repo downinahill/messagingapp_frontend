@@ -1,7 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
 import { AttachFile, MoreVert, SearchOutlined, Send } from '@material-ui/icons';
 import './Chat.css';
+import axios from 'axios'
+
+
+class PostList extends Component {
+    state: {
+        posts: [],
+        comments: []
+    };
+
+componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/posts`).then(res => {
+        const posts = res.data;
+        this.setState({ posts });
+    })
+
+}
+}
+
 
 
 const Chat = () => {
