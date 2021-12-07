@@ -17,7 +17,7 @@ const Nav = () => {
                         <a href="https://suicidepreventionlifeline.org/">In case of an emergency plesase call 800-273-8255 or text 988</a>
                     </li>
                 <div>
-                    <img src='/Users/brianhill/Projects/messagingapp_frontend/messaging-frontend/public/Images/Mind Devour.jpeg'></img>
+                    <style><img alt="Mind Devour" src='/Users/brianhill/Projects/messagingapp_frontend/messaging-frontend/public/Images/Mind Devour.jpeg'></img></style>
                 </div>
                 </ul>
             </div>
