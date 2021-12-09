@@ -9,7 +9,7 @@
     align-items: flex-end;
     justify-content: space-evenly;
     margin-top: 50px;
-    font-family: 'Comforter', cursive;
+    
     padding-top: 50px;
 }
 
@@ -23,6 +23,6 @@ ul{
 }
 
 h1{
-    
+    font-family: 'Comforter', cursive;
     margin-top: 50px;
 }
