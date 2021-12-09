@@ -9,8 +9,10 @@ import axios from './axios';
 
 
 function Chat ({ messages }) {
+    // eslint-disable-next-line
     const [seed, setSeed] = useState("")
     const [input, setInput] = useState("")
+    // eslint-disable-next-line
     const [text, setText] = useState("")
     const sendMessage = async (e) => {
         e.preventDefault()
@@ -30,7 +32,8 @@ function Chat ({ messages }) {
     return (
         <div className="chat">
             <div className="chat_header">
-                <Avatar src={'https://avatars.dicebear.com/api/human/b${seed}.svg'}/>
+                
+                <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`}/>
                 <div className="chat_headerInfo">
                     <h3>Room Name</h3>
                     <p>Last seen at...</p>

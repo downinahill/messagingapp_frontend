@@ -13,7 +13,7 @@ import Pusher from 'pusher-js'
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
 function App () {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([React.useState])
   useEffect(() => {
       axios.get("messages/sync").then(res => {
           setMessages(res.data)
