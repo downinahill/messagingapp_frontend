@@ -11,7 +11,7 @@ const Nav = () => {
                         <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href=''>Logout</a>
+                        <a href="logout.html">Logout</a>
                     </li>
                     <li>
                         <a href="https://suicidepreventionlifeline.org/">In case of an emergency plesase call 800-273-8255 or text 988</a>

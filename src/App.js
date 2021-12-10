@@ -5,6 +5,10 @@ import Chat from './Components/Chat'
 import axios from './Components/axios'
 import Nav from './Components/Nav'
 import Pusher from 'pusher-js'
+
+
+// import Login from './Components/Login';
+
 // import NewPost from './Components/NewPost'
 // import List from './Components/List'
 
@@ -12,11 +16,19 @@ import Pusher from 'pusher-js'
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
+
+
+
+
+
 function App () {
-  const [messages, setMessages] = useState([React.useState])
+  const [messages, setMessages] = useState([])
+  
+  const [user, setUser] = useState(null)
   useEffect(() => {
       axios.get("messages/sync").then(res => {
           setMessages(res.data)
+          console.log(res.data)
       })
   }, [])
 
@@ -40,12 +52,14 @@ function App () {
   
   return (
     <div className="app">
+      
       <div className="app_body">
         <Nav />
-        <Sidebar />
-        <Chat messages={messages} />
+        <Sidebar messages={messages}/>
+        <Chat messages={messages} setMessages={setMessages} />
         
       </div>
+      
     </div>
   )
 

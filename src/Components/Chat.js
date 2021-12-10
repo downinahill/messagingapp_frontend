@@ -8,22 +8,38 @@ import axios from './axios';
 
 
 
-function Chat ({ messages }) {
-    // eslint-disable-next-line
+
+function Chat ({ messages, setMessages}) {
+    
     const [seed, setSeed] = useState("")
     const [input, setInput] = useState("")
-    // eslint-disable-next-line
-    const [text, setText] = useState("")
+    const [data, setData] = useState("")
+    const [text, setText] = useState()
+
     const sendMessage = async (e) => {
         e.preventDefault()
-        await axios.post('/messages/new', { 
+        const response = await axios.post('/messages/new', { 
             message: input,
             name: "Brian",
             timestamp: new Date().toUTCString(),
             received: true
         })
+        const copyMessages = [...messages, response.data]
+        setMessages(copyMessages)
         // setInput(sendMessage)
     }
+    const deleteMessage = async (e) => {
+        e.preventDefault();
+        await axios.delete('/messages/sync', {
+            message: input,
+            name: "user.displayName",
+            timestamp: new Date().toUTCString(),
+            received: true
+        })
+    }
+
+
+
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000))
     }, [])
@@ -35,7 +51,7 @@ function Chat ({ messages }) {
                 
                 <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`}/>
                 <div className="chat_headerInfo">
-                    <h3>Room Name</h3>
+                    <h3><strong>Is There Anyone Home?</strong></h3>
                     <p>Last seen at...</p>
                 </div>
                 <div className="chat_headerRight">
@@ -54,11 +70,15 @@ function Chat ({ messages }) {
             {messages.map(message => (
                     <p className={`chat_message ${message.received &&
                         'chat_receiver'}`}>
+                            
                             <span className="chat_name">{message.name}</span>
+                
                                 {message.message}
                             <span className="chat_timestamp">
                                 {message.timestamp}
+                                <button onClick={deleteMessage} type="delete">Delete</button>
                             </span>
+                            
                     </p>
                     
                 ))}
@@ -68,17 +88,17 @@ function Chat ({ messages }) {
 </div>
             <div className="chat_footer">
                 <Send />
-
-                <form>
+                <button onClick={sendMessage} type="submit">Send</button>
+                
+                <form onSubmit={sendMessage}>
 
                     <input
                         placeholder="What's goin on?"
                         type="text"
-                        value={input}
+                        value={useState.input}
                         onChange={e => setInput(e.target.value)}
                     
                     />
-                    <button onClick={sendMessage} type="submit">Send</button>
                     
                 </form>
                 <MicIcon />
