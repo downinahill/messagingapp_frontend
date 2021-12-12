@@ -5,14 +5,17 @@ import Chat from './Components/Chat'
 import axios from './Components/axios'
 import Nav from './Components/Nav'
 import Pusher from 'pusher-js'
+import Login from './Components/Login'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Welcome from './Components/Welcome'
 
 
-// import Login from './Components/Login';
+
 
 // import NewPost from './Components/NewPost'
 // import List from './Components/List'
 
-// import Login from './Components/Login'
+
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
@@ -32,37 +35,46 @@ function App () {
       })
   }, [])
 
-  useEffect(() => {
-    const pusher = new Pusher("9b5fb9e2d4497d2f068a", {
-      cluster: 'mt1'
-    })
 
-    const channel = pusher.subscribe('messages')
-    channel.bind('inserted', (data) => {
-      setMessages([...messages, data])
-    })
 
-    return () => {
-      channel.unbind_all()
-      channel.unsubscribe()
-    }
-  }, [messages])
-  console.log(messages)
+  
+
+  // useEffect(() => {
+  //   const pusher = new Pusher("9b5fb9e2d4497d2f068a", {
+  //     cluster: 'mt1'
+  //   })
+
+  //   const channel = pusher.subscribe('messages')
+  //   channel.bind('inserted', (data) => {
+  //     setMessages([...messages, data])
+  //   })
+
+  //   return () => {
+  //     channel.unbind_all()
+  //     channel.unsubscribe()
+  //   }
+  // }, [messages])
+  // console.log(messages)
 
   
   return (
     <div className="app">
       
+      <div className="center"></div>
       <div className="app_body">
+      
+      {/* <Welcome  /> */}
+
         <Nav />
         <Sidebar messages={messages}/>
         <Chat messages={messages} setMessages={setMessages} />
+        
         
       </div>
       
     </div>
   )
-
+  
 }
 
 export default App

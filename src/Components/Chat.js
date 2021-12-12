@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, MoreVert, SearchOutlined, Send } from '@material-ui/icons';
+import { AttachFile, MoreVert, SearchOutlined, Send, Edit, EmojiEmotions, DeleteRounded, ClearAll } from '@material-ui/icons';
 import './Chat.css';
 import MicIcon from '@material-ui/icons/Mic'
 import axios from './axios';
@@ -26,18 +26,19 @@ function Chat ({ messages, setMessages}) {
         })
         const copyMessages = [...messages, response.data]
         setMessages(copyMessages)
-        // setInput(sendMessage)
+        
     }
-    const deleteMessage = async (e) => {
-        e.preventDefault();
-        await axios.delete('/messages/sync', {
-            message: input,
-            name: "user.displayName",
-            timestamp: new Date().toUTCString(),
-            received: true
-        })
-    }
+    const deleteMessage = async (id, e) => {
 
+        e.preventDefault();
+        console.log(id)
+        const erase = await axios.delete(`/messages/${id}`)
+            
+        
+        const getRidOf = [...messages]
+        setMessages(getRidOf)
+
+    }
 
 
     useEffect(() => {
@@ -64,9 +65,14 @@ function Chat ({ messages, setMessages}) {
                     <IconButton>
                         <MoreVert />
                     </IconButton>
+                    <IconButton>
+                        <ClearAll />
+                    </IconButton>
                 </div>
             </div>
             <div className="chat_body">
+            <style>
+</style>
             {messages.map(message => (
                     <p className={`chat_message ${message.received &&
                         'chat_receiver'}`}>
@@ -76,7 +82,17 @@ function Chat ({ messages, setMessages}) {
                                 {message.message}
                             <span className="chat_timestamp">
                                 {message.timestamp}
-                                <button onClick={deleteMessage} type="delete">Delete</button>
+
+                                
+                                
+                                <IconButton onClick={(e) => deleteMessage(message._id, e)}>
+                                <DeleteRounded type="submit"/>
+                                </IconButton>
+                                <IconButton>
+                                <Edit />
+                                </IconButton>
+
+                            
                             </span>
                             
                     </p>
@@ -87,8 +103,13 @@ function Chat ({ messages, setMessages}) {
 
 </div>
             <div className="chat_footer">
-                <Send />
-                <button onClick={sendMessage} type="submit">Send</button>
+                <IconButton onClick={sendMessage}>
+                <Send type="submit"/>
+                </IconButton>
+                <IconButton>
+                <EmojiEmotions type="submit"/>
+                </IconButton>
+                
                 
                 <form onSubmit={sendMessage}>
 
@@ -101,7 +122,9 @@ function Chat ({ messages, setMessages}) {
                     />
                     
                 </form>
+                <IconButton>
                 <MicIcon />
+                </IconButton>
 
             </div>
         </div>
