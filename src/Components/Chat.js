@@ -9,16 +9,16 @@ import axios from './axios';
 
 
 
-function Chat ({ messages, setMessages}) {
-    
+function Chat({ messages, setMessages }) {
+
     const [seed, setSeed] = useState("")
     const [input, setInput] = useState("")
     const [data, setData] = useState("")
-    const [text, setText] = useState()
+    const [total, setTotal] = useState([])
 
     const sendMessage = async (e) => {
         e.preventDefault()
-        const response = await axios.post('/messages/new', { 
+        const response = await axios.post('/messages/new', {
             message: input,
             name: "Brian",
             timestamp: new Date().toUTCString(),
@@ -26,19 +26,79 @@ function Chat ({ messages, setMessages}) {
         })
         const copyMessages = [...messages, response.data]
         setMessages(copyMessages)
-        
+
     }
     const deleteMessage = async (id, e) => {
 
         e.preventDefault();
         console.log(id)
         const erase = await axios.delete(`/messages/${id}`)
-            
-        
-        const getRidOf = [...messages]
-        setMessages(getRidOf)
+        console.log(erase)
 
+        const copyMessages = [...messages]
+        const foundIndex = messages.findIndex((comment) => {
+            return comment._id === id
+
+        })
+        copyMessages.splice(foundIndex, 1)
+        setMessages(copyMessages)
     }
+
+
+
+    
+    const updateMessage = async (id, e) => {
+            e.preventDefault();
+            const response =
+            axios.put(`/messages/${id}`)
+            .then(res => console.log(res.data));
+            console.log(response);
+
+        }
+
+
+
+    const handleEdit = async (data) => {
+        setData({
+            data: setData,
+        });
+        console.log(data)
+    };
+
+    // const deleteMessage = props => {
+    //     const removeData = () => {
+    //       axios
+    //         .delete("/messages/" + props.obj.id)
+    //         .then(() => {
+    //           props.setRequestData(new Date());
+    //         })
+    //         .catch(err => console.log(err));
+    //     };
+
+
+    // const deleteMessage = async (idOfSessionToDelete) => {
+    //     const url = process.env.REACT_APP_API_URL + "/messages/new" + idOfSessionToDelete
+
+    //     try {
+    //         const deleteSessionResponse = await fetch(url, {
+    //             credentials: 'include',
+    //             method: 'DELETE'
+    //         })
+    //         console.log("deleteSessionResponse", deleteSessionResponse)
+    //         const deleteSessionJson = await deleteSessionResponse.json()
+    //         console.log("deleteSessionJson", deleteSessionJson)
+
+    //         if(deleteSessionResponse.status === 200) {
+    //             this.setState({
+    //                 sessions: this.state.sessions.filter(session => session.id !== idOfSessionToDelete)
+    //             })
+    //         }
+    //     } catch(error) {
+    //         console.error("There was a problem deleting the session:")
+    //         console.error(error)
+    //     }
+    // }
+
 
 
     useEffect(() => {
@@ -49,8 +109,8 @@ function Chat ({ messages, setMessages}) {
     return (
         <div className="chat">
             <div className="chat_header">
-                
-                <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`}/>
+
+                <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`} />
                 <div className="chat_headerInfo">
                     <h3><strong>Is There Anyone Home?</strong></h3>
                     <p>Last seen at...</p>
@@ -71,46 +131,46 @@ function Chat ({ messages, setMessages}) {
                 </div>
             </div>
             <div className="chat_body">
-            <style>
-</style>
-            {messages.map(message => (
+                <style>
+                </style>
+                {messages.map(message => (
                     <p className={`chat_message ${message.received &&
                         'chat_receiver'}`}>
-                            
-                            <span className="chat_name">{message.name}</span>
-                
-                                {message.message}
-                            <span className="chat_timestamp">
-                                {message.timestamp}
 
-                                
-                                
-                                <IconButton onClick={(e) => deleteMessage(message._id, e)}>
-                                <DeleteRounded type="submit"/>
-                                </IconButton>
-                                <IconButton>
-                                <Edit />
-                                </IconButton>
+                        <span className="chat_name">{message.name}</span>
 
-                            
-                            </span>
-                            
+                        {message.message}
+                        <span className="chat_timestamp">
+                            {message.timestamp}
+
+
+
+                            <IconButton onClick={(e) => deleteMessage(message._id, e)}>
+                                <DeleteRounded type="submit" value="Delete" />
+                            </IconButton>
+                            <IconButton onClick={(e) => updateMessage(message._id, e)}>
+                                <Edit type="submit" value="Delete" />
+                            </IconButton>
+
+
+                        </span>
+
                     </p>
-                    
+
                 ))}
 
-                
 
-</div>
+
+            </div>
             <div className="chat_footer">
                 <IconButton onClick={sendMessage}>
-                <Send type="submit"/>
+                    <Send type="submit" />
                 </IconButton>
                 <IconButton>
-                <EmojiEmotions type="submit"/>
+                    <EmojiEmotions type="submit" />
                 </IconButton>
-                
-                
+
+
                 <form onSubmit={sendMessage}>
 
                     <input
@@ -118,12 +178,12 @@ function Chat ({ messages, setMessages}) {
                         type="text"
                         value={useState.input}
                         onChange={e => setInput(e.target.value)}
-                    
+
                     />
-                    
+
                 </form>
                 <IconButton>
-                <MicIcon />
+                    <MicIcon />
                 </IconButton>
 
             </div>
@@ -187,7 +247,7 @@ export default Chat
 //                         <span className="chat_timestamp">
 //                             {new Date().toUTCString()}
 //                         </span>
-                        
+
 //                     </p>
 //                     <p className="chat_message">
 //                         <span className="chat_name">Brian</span>
@@ -196,8 +256,8 @@ export default Chat
 //                             {new Date().toUTCString()}
 //                         </span>
 //                     </p>
-                    
-                    
+
+
 
 
 

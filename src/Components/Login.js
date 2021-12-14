@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core'
 import './Login.css';
 import { auth, provider } from '../firebase'
 
+
 const Login = () => {
     const signIn = () => {
         auth.signInWithPopup(provider)
@@ -13,7 +14,7 @@ const Login = () => {
     return (
         <div className="login">
             <div className="login_container">
-                <img src="logo512.png" alt="whatsapp" />
+                
                 <div className="login_text">
                     <h1>Sign in to: Is There Anybody Out There?</h1>
                     </div>
