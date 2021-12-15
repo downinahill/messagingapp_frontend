@@ -6,7 +6,7 @@ import axios from './Components/axios'
 import Nav from './Components/Nav'
 import Pusher from 'pusher-js'
 import Login from './Components/Login'
-import { BrowserRouter as Router, Route, Routes, redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Welcome from './Components/Welcome'
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";

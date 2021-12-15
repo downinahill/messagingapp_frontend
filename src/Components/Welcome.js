@@ -78,8 +78,8 @@ class Welcome extends Component {
         return (
             <div className="welcome-margin">
             <div className="container position-absolute">
-            <h1 className="font-welcome">Welcome to The Machine</h1>
-            <h5 className="font-welcome-text">Sign up or login to tear down the wall!</h5>
+            <h1 className="font-welcome">Is There Anybody Out There?</h1>
+            <h5 className="font-welcome-text">Sign up or login to get started!</h5>
 
 
 
@@ -94,7 +94,7 @@ class Welcome extends Component {
               <div className="modal-content bg-light">
                 <form onSubmit={this.registerUser}>
                 <div className="modal-header">
-                  <h5 className="modal-title text-dark font-welcome-buttons" id="exampleModalLabel">Hello, please sign up to The Machine</h5>
+                  <h5 className="modal-title text-dark font-welcome-buttons" id="exampleModalLabel">Hello, please sign up for Accompli!</h5>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body row g-2 font-welcome-text">

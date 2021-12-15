@@ -9,10 +9,10 @@
 
 
 .App {
-  text-align: center;
-  display: grid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background-color: #dadbd3;
   
   
 }

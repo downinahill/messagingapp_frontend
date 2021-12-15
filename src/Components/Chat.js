@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, MoreVert, SearchOutlined, Send, Edit, EmojiEmotions, DeleteRounded, ClearAll } from '@material-ui/icons';
+import { AttachFile, MoreVert, SearchOutlined, Send, Edit, EmojiEmotions, ClearAll } from '@material-ui/icons';
 import './Chat.css';
 import MicIcon from '@material-ui/icons/Mic'
 import axios from './axios';
+import CommentBox from './CommentBox';
 
 
 
@@ -47,13 +48,14 @@ function Chat({ messages, setMessages }) {
 
 
     
-    const updateMessage = async (id, e) => {
-            e.preventDefault();
-            const response =
-            axios.put(`/messages/${id}`)
+    const updateMessage = async (id, editedMessage) => {
+        console.log(id)
+        console.log(editedMessage)
+            const response = axios.put(`/messages/${id}`, {message: editedMessage}, {headers: {
+                "Content-Type": "application/json"}
+            })
             .then(res => console.log(res.data));
             console.log(response);
-
         }
 
 
@@ -134,29 +136,11 @@ function Chat({ messages, setMessages }) {
                 <style>
                 </style>
                 {messages.map(message => (
-                    <p className={`chat_message ${message.received &&
-                        'chat_receiver'}`}>
-
-                        <span className="chat_name">{message.name}</span>
-
-                        {message.message}
-                        <span className="chat_timestamp">
-                            {message.timestamp}
-
-
-
-                            <IconButton onClick={(e) => deleteMessage(message._id, e)}>
-                                <DeleteRounded type="submit" value="Delete" />
-                            </IconButton>
-                            <IconButton onClick={(e) => updateMessage(message._id, e)}>
-                                <Edit type="submit" value="Delete" />
-                            </IconButton>
-
-
-                        </span>
-
-                    </p>
-
+                    <CommentBox 
+                        message={message}
+                        updateMessage={updateMessage}
+                        deleteMessage={deleteMessage}
+                    />
                 ))}
 
 
