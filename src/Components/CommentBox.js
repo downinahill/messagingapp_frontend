@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Edit, DeleteRounded } from '@material-ui/icons';
+import { Edit, DeleteRounded, Save } from '@material-ui/icons';
 import { IconButton } from '@material-ui/core';
 
 function CommentBox (props) {
@@ -12,7 +12,10 @@ return (
     {isUpdating && 
             <div className='chat_message'>
                 <input onChange={(e) => {setEditedMessage(e.target.value)}} type='text' />
-                <button onClick={(e) => {updateMessage(message._id, editedMessage); setIsUpdating(false)}}>Save</button>
+                <IconButton onClick={(e) => {updateMessage(message._id, editedMessage); setIsUpdating(false)}}>
+                    <Save />
+                </IconButton>
+                
                 <button onClick={() => {setIsUpdating(false)}}>Cancel</button>
             </div>
         }

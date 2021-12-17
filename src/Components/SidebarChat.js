@@ -14,8 +14,7 @@ const SidebarChat = () => {
         <div className="sidebarChat">
             <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`}/>
             <div className="sidebarChat_info">
-                <h2>Hello, Hello, Now...I hear you're feeling...DOWN...
-                    Well I can ease your pain. Get you on your feet again...</h2>
+                <h2>Is There Anyone Home?</h2>
                 {/* <p>{messages[messages.length -1]?.message}</p> */}
             </div>
         </div>

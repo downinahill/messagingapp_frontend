@@ -60,46 +60,15 @@ function Chat({ messages, setMessages }) {
 
 
 
-    const handleEdit = async (data) => {
+    const handleFile = async (data) => {
+        console.log(data)
         setData({
             data: setData,
         });
         console.log(data)
     };
 
-    // const deleteMessage = props => {
-    //     const removeData = () => {
-    //       axios
-    //         .delete("/messages/" + props.obj.id)
-    //         .then(() => {
-    //           props.setRequestData(new Date());
-    //         })
-    //         .catch(err => console.log(err));
-    //     };
 
-
-    // const deleteMessage = async (idOfSessionToDelete) => {
-    //     const url = process.env.REACT_APP_API_URL + "/messages/new" + idOfSessionToDelete
-
-    //     try {
-    //         const deleteSessionResponse = await fetch(url, {
-    //             credentials: 'include',
-    //             method: 'DELETE'
-    //         })
-    //         console.log("deleteSessionResponse", deleteSessionResponse)
-    //         const deleteSessionJson = await deleteSessionResponse.json()
-    //         console.log("deleteSessionJson", deleteSessionJson)
-
-    //         if(deleteSessionResponse.status === 200) {
-    //             this.setState({
-    //                 sessions: this.state.sessions.filter(session => session.id !== idOfSessionToDelete)
-    //             })
-    //         }
-    //     } catch(error) {
-    //         console.error("There was a problem deleting the session:")
-    //         console.error(error)
-    //     }
-    // }
 
 
 
@@ -114,16 +83,19 @@ function Chat({ messages, setMessages }) {
 
                 <Avatar src={`https://avatars.dicebear.com/api/human/b${seed}.svg`} />
                 <div className="chat_headerInfo">
-                    <h3><strong>Is There Anyone Home?</strong></h3>
+                    <h3><strong>Hello, Hello, Now...I hear you're feeling...DOWN...
+                    Well I can ease your pain. Get you on your feet again...</strong></h3>
                     <p>Last seen at...</p>
                 </div>
                 <div className="chat_headerRight">
                     <IconButton>
                         <SearchOutlined />
                     </IconButton>
-                    <IconButton>
+                    <IconButton onClick={handleFile}>
                         <AttachFile />
+                        
                     </IconButton>
+                   
                     <IconButton>
                         <MoreVert />
                     </IconButton>

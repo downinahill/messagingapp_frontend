@@ -4,10 +4,12 @@ import Sidebar from './Components/Sidebar'
 import Chat from './Components/Chat'
 import axios from './Components/axios'
 import Nav from './Components/Nav'
-import Pusher from 'pusher-js'
-import Login from './Components/Login'
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import About from './Components/About';
+import ReactDOM from 'react-dom'
+import SidebarChat from './Components/SidebarChat'
+import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
 import Welcome from './Components/Welcome'
+import { useStateValue } from './Components/StateProvider'
 
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
@@ -19,7 +21,7 @@ axios.defaults.baseURL = baseUrl
 function App () {
   const [messages, setMessages] = useState([])
   
-  const [user, setUser] = useState(null)
+  const [user, dispatch] = useState()
   useEffect(() => {
       axios.get("messages/sync").then(res => {
           setMessages(res.data)
@@ -37,12 +39,17 @@ function App () {
       <div className="center"></div>
       <div className="app_body">
      
-      <Welcome  />
+     
+       {/* <Welcome  /> */}
+    
+
+      
+      
       
         {/* <Login /> */}
-  
+       
         <Nav />
-        <Sidebar messages={messages}/>
+        <Sidebar />
         <Chat messages={messages} setMessages={setMessages} />
         
             </div>

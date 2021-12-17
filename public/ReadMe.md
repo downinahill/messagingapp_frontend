@@ -1,0 +1,1 @@
+I created this app as an emotional support app to help those in distress free of judgement. I used a MERN stack for it which includes Mongodb, Express, React and Node. Here is the url to the deployed app https://isthereanybodyoutthere.herokuapp.com/

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 class Welcome extends Component {
   constructor(props) {
     super(props);
@@ -66,7 +67,8 @@ class Welcome extends Component {
       } else {
         response.json().then((data) => {
           console.log(data);
-        })}
+        })
+      }
     }
     catch (err) {
       console.log('Error => ', err);
@@ -74,71 +76,71 @@ class Welcome extends Component {
   }
 
 
-    render() {
-        return (
-            <div className="welcome-margin">
-            <div className="container position-absolute">
-            <h1 className="font-welcome">Is There Anybody Out There?</h1>
-            <h5 className="font-welcome-text">Sign up or login to get started!</h5>
+  render() {
+    return (
+      <div className="welcome-margin">
+        <div className="container position-absolute">
+          <h1 className="font-welcome">Is There Anybody Out There?</h1>
+          <h5 className="font-welcome-text">Sign up or login to get started!</h5>
 
 
 
-            <div className="">
+          <div className="">
             <button type="button" className="btn bg-dark text-light font-welcome-buttons" data-bs-toggle="modal" data-bs-target="#signUpModal">SIGN UP</button>
             <button type="button" className="btn bg-light font-welcome-buttons" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN</button>
-            </div>
+          </div>
 
-            {/* Sign Up Modal */}
-            <div className="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {/* Sign Up Modal */}
+          <div className="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content bg-light">
                 <form onSubmit={this.registerUser}>
-                <div className="modal-header">
-                  <h5 className="modal-title text-dark font-welcome-buttons" id="exampleModalLabel">Hello, please sign up for Accompli!</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body row g-2 font-welcome-text">
-                <label htmlFor="email">Email Address: </label>
-                  <input
-                    type="text"
-                    id="email"
-                    name="email"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.email}
-                  />
-                  <br></br>
-                  <label htmlFor="username">Username: </label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.username}
-                  />
-                  <br></br>
-                  <label htmlFor="password">Password: </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.password}
-                  />
-                  <br></br>
-                   <label htmlFor="confirmedPassword">Confirm Password: </label>
-                  <input
-                    type="password"
-                    id="confirmedPassword"
-                    name="confirmedPassword"
-                    onChange={(e) => this.handleChange(e)}
-                    value={this.state.confirmedPassword}
-                  />
+                  <div className="modal-header">
+                    <h5 className="modal-title text-dark font-welcome-buttons" id="exampleModalLabel">Hello, please sign up for Is There Anybody Out There?</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body row g-2 font-welcome-text">
+                    <label htmlFor="email">Email Address: </label>
+                    <input
+                      type="text"
+                      id="email"
+                      name="email"
+                      onChange={(e) => this.handleChange(e)}
+                      value={this.state.email}
+                    />
+                    <br></br>
+                    <label htmlFor="username">Username: </label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      onChange={(e) => this.handleChange(e)}
+                      value={this.state.username}
+                    />
+                    <br></br>
+                    <label htmlFor="password">Password: </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      onChange={(e) => this.handleChange(e)}
+                      value={this.state.password}
+                    />
+                    <br></br>
+                    <label htmlFor="confirmedPassword">Confirm Password: </label>
+                    <input
+                      type="password"
+                      id="confirmedPassword"
+                      name="confirmedPassword"
+                      onChange={(e) => this.handleChange(e)}
+                      value={this.state.confirmedPassword}
+                    />
 
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
-                  <input type="submit" className="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Sign Up" />
-                </div>
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" className="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Sign Up" />
+                  </div>
                 </form>
               </div>
             </div>
@@ -157,39 +159,39 @@ class Welcome extends Component {
             <div className="modal-dialog">
               <div className="modal-content">
                 <form onSubmit={this.props.loginUser}>
-                <div className="modal-header">
-                  <h5 className="modal-title font-welcome-buttons" id="exampleModalLabel">Welcome back, Please log in!</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body row g-2 font-welcome-text">
-                  <label htmlFor="username">Username: </label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                  <br></br>
-                  <label htmlFor="password">Password: </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    onChange={(e) => this.handleChange(e)}
-                  />
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
-                  <input type="submit" className="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Login" />
-                </div>
-              </form>
+                  <div className="modal-header">
+                    <h5 className="modal-title font-welcome-buttons" id="exampleModalLabel">Welcome back, Please log in!</h5>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div className="modal-body row g-2 font-welcome-text">
+                    <label htmlFor="username">Username: </label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                    <br></br>
+                    <label htmlFor="password">Password: </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary font-signup-buttons" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" className="btn btn-dark text-light font-signup-buttons" data-bs-dismiss="modal" value="Login" />
+                  </div>
+                </form>
               </div>
             </div>
-            </div>
-            </div>
           </div>
-         );
-    }
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Welcome;

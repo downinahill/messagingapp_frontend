@@ -34,13 +34,16 @@ const Sidebar = ({ messages }) => {
             </div>
             
             <div className="sidebar_searchContainer">
+                <IconButton>
                 <SearchOutlined />
+                </IconButton>
                 <input placeholder="Start new discussion"
                     type="text" />
             </div>
             <div className="sidebar_chats">
                 <SidebarChat messages={messages} />
-                
+                <SidebarChat messages={messages}  />
+                <SidebarChat messages={messages} />
             </div>
         </div>
     )
