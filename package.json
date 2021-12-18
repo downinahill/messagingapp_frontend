@@ -49,5 +49,10 @@
   },
   "devDependencies": {
     "html-loader": "^3.0.1"
+  },
+  "engines": {
+    "node": "14.7.5",
+    "npm": "6.14.14"
   }
+
 }
