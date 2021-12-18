@@ -12,13 +12,13 @@ axios.defaults.baseURL = baseUrl
 
 
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+  baseUrl = 'https://isthereanybodyoutthere.herokuapp.com/';
 } else {
 
-  baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+  baseUrl = 'https://isthereanybodyoutthere.herokuapp.com/';
 }
 
-console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseUrl)
+console.log('https://isthereanybodyoutthere.herokuapp.com/', baseUrl)
 
 
 

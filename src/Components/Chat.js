@@ -25,13 +25,13 @@ function Chat({ messages, setMessages }) {
     
     
     if (process.env.NODE_ENV === 'development') {
-      baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+      baseUrl = 'https://isthereanybodyoutthere.herokuapp.com/';
     } else {
     
-      baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+      baseUrl = 'https://isthereanybodyoutthere.herokuapp.com/';
     }
     
-    console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseUrl)
+    console.log('https://isthereanybodyoutthere.herokuapp.com/', baseUrl)
 
 
 
@@ -40,7 +40,7 @@ function Chat({ messages, setMessages }) {
 
     const sendMessage = async (e) => {
         e.preventDefault()
-        const response = await axios.post(baseUrl + '/messages/new',  {
+        const response = await axios.post( '/messages/new',  {
             message: input,
             name: "Brian",
             timestamp: new Date().toUTCString(),
