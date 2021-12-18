@@ -14,7 +14,16 @@ import { useStateValue } from './Components/StateProvider'
 let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
 
+let baseURL = REACT_APP_BASEURL || "http://localhost:3003";
 
+if (process.env.NODE_ENV === 'development') {
+  baseURL = 'http://localhost:3003';
+} else {
+  // "https://fathomless-sierra-68956.herokuapp.com" in this case is the *API* url
+  baseURL = 'https://isthereanybodyouttherefront.herokuapp.com/';
+}
+
+console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseURL)
 
 
 
