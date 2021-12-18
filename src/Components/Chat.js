@@ -17,9 +17,30 @@ function Chat({ messages, setMessages }) {
     const [data, setData] = useState("")
     const [total, setTotal] = useState([])
 
+
+
+    let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
+    axios.defaults.baseURL = baseUrl
+    
+    
+    
+    if (process.env.NODE_ENV === 'development') {
+      baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+    } else {
+    
+      baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
+    }
+    
+    console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseUrl)
+
+
+
+
+
+
     const sendMessage = async (e) => {
         e.preventDefault()
-        const response = await axios.post('/messages/new', {
+        const response = await axios.post(baseUrl + '/messages/new',  {
             message: input,
             name: "Brian",
             timestamp: new Date().toUTCString(),
@@ -132,7 +153,7 @@ function Chat({ messages, setMessages }) {
                     <input
                         placeholder="What's goin on?"
                         type="text"
-                        value={useState.input}
+                        value={input}
                         onChange={e => setInput(e.target.value)}
 
                     />

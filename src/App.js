@@ -4,14 +4,9 @@ import Sidebar from './Components/Sidebar'
 import Chat from './Components/Chat'
 import axios from './Components/axios'
 import Nav from './Components/Nav'
-import About from './Components/About';
-import ReactDOM from 'react-dom'
-import SidebarChat from './Components/SidebarChat'
-import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
-import Welcome from './Components/Welcome'
-import { useStateValue } from './Components/StateProvider'
 
-let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3000";
+
+let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
 axios.defaults.baseURL = baseUrl
 
 
