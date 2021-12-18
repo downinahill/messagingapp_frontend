@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-d
 import Welcome from './Components/Welcome'
 import { useStateValue } from './Components/StateProvider'
 
-let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3003";
+let baseUrl = process.env.REACT_APP_BASEURL || "http://localhost:3000";
 axios.defaults.baseURL = baseUrl
 
 
