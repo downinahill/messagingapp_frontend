@@ -17,13 +17,13 @@ axios.defaults.baseURL = baseUrl
 
 
 if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3000';
+  baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
 } else {
-  // "https://fathomless-sierra-68956.herokuapp.com" in this case is the *API* url
-  baseURL = 'https://isthereanybodyouttherefront.herokuapp.com/';
+
+  baseUrl = 'https://isthereanybodyouttherefront.herokuapp.com/';
 }
 
-console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseURL)
+console.log('https://isthereanybodyouttherefront.herokuapp.com/', baseUrl)
 
 
 
