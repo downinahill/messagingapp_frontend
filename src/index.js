@@ -5,20 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-import { StateProvider } from './Components/StateProvider';
-import reducer, { initialState } from './Components/Reducer'
+
 
 
 
 
 ReactDOM.render(
-  
+
   <React.StrictMode>
-    
+
     <App />
-    
+
   </React.StrictMode>,
-  
+
   document.getElementById('root')
 );
 
